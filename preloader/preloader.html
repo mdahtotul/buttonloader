@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preloader </title>
+    <link rel="stylesheet" href="preloader.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div class="bar">
+            <div class="fill"></div>
+        </div>
+        
+        <div class="counter">0%</div>
+        <button class="button">Click to Load</button>
+
+    </div>
+
+    <div class="output">
+        <i class="fas fa-check"></i>
+        <div class="text">Progressing has finised !!!</div>
+    </div>
+
+    <!-- font awesome js  -->
+    <script src="https://kit.fontawesome.com/f4873ebcd9.js" crossorigin="anonymous"></script>
+
+    <!-- js -->
+    <script>
+        const container = document.querySelector('.container');
+        const output = document.querySelector('.output');
+        const fill = document.querySelector('.fill');
+        const button = document.querySelector('.button');
+
+        button.addEventListener('click',()=>{
+            let a = 0;
+            let run ;
+            const frames = () =>{
+                
+                a = a + 1;
+                if(a == 101){
+                    clearInterval(run);
+                    container.style.display = 'none';
+                    output.style.display = 'block';
+                } else {
+                    let counter = document.querySelector('.counter');
+                    counter.textContent = a + '%';
+                    fill.style.width = a + '%';
+                }
+            }
+            run = setInterval(frames,50);
+        })
+    </script>
+</body>
+</html>
